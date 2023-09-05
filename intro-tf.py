@@ -87,7 +87,25 @@ Finding a good value often involves some trial and error, but the range is usual
 history = model.fit(celsius_q, fahrenheit_a, epochs=500, verbose=False)
 print("Finished traing the model")
 
+"""
+During training, the model takes in Celsius values, performs a calculation using the current internal variables (called "weights") and outputs values which 
+are meant to be the Fahrenheit equivalent.
+
+Since the weights are initially set randomly, the output will not be close to the correct value. The difference between the actual output and the desired output is calculated 
+using the loss function, and the optimizer function directs how the weights should be adjusted.
+
+This cycle of calculate, compare, adjust is controlled by the fit method. The first argument is the inputs, the second argument is the desired outputs.
+The epochs argument specifies how many times this cycle should be run, and the verbose argument controls how much output the method produces.
+"""
+
 ## Display training statistics
+"""
+The fit method returns a history object. We can use this object to plot how the loss of our model goes down after each training epoch.
+A high loss means that the Fahrenheit degrees the model predicts is far from the corresponding value in fahrenheit_a.
+
+We'll use Matplotlib to visualize this (you could use another tool). As you can see, our model improves very quickly at first, 
+and then has a steady, slow improvement until it is very near "perfect" towards the end.
+"""
 # import matplotlib.pyplot as plt
 # plt.xlabel('Epoch Number')
 # plt.ylabel("Loss Magnitude")
@@ -96,3 +114,13 @@ print("Finished traing the model")
 
 ## use the Model
 print(model.predict([100.0]))
+
+
+## To review
+"""
+- We created a model with a Dense layer
+- We trained it with 3500 examples (7 pairs, over 500 epochs).
+
+Our model tuned the variables (weights) in the Dense layer until it was able to return the correct Fahrenheit value for any Celsius value.
+(Remember, 100 Celsius was not part of our training data.)
+"""

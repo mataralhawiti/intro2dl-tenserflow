@@ -63,6 +63,25 @@ Before traing, the model has to be compiled. When compiled for training, the mod
 
 model.compile(loss="mean_squared_error", optimizer=tf.keras.optimizers.Adam(0.1))
 
+"""
+These are used during training (model.fit(), below) to first calculate the loss at each point, and then improve it.
+In fact, the act of calculating the current loss of a model and then improving it is precisely **what training is**.
+
+During training, the optimizer function is used to calculate adjustments to the model's internal variables.
+The goal is to adjust the internal variables until **the model (which is really a math function)** mirrors the actual equation for converting Celsius to Fahrenheit.
+
+TensorFlow uses numerical analysis to perform this tuning, and all this complexity is hidden from you so we will not go into the details here.
+What is useful to know about these parameters are:
+
+The loss function (mean squared error) and the optimizer (Adam) used here are standard for simple models like this one,
+but many others are available. It is not important to know how these specific functions work at this point.
+
+One part of the Optimizer you may need to think about when building your own models is the learning rate (0.1 in the code above).
+This is the step size taken when adjusting values in the model.
+If the value is too small, it will take too many iterations to train the model.Too large, and accuracy goes down.
+Finding a good value often involves some trial and error, but the range is usually within 0.001 (default), and 0.1
+"""
+
 
 ## Train the model
 history = model.fit(celsius_q, fahrenheit_a, epochs=500, verbose=False)

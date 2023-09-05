@@ -39,3 +39,9 @@ We train our neural network by repeatedly letting the network try to map the inp
 Traing the neural netwrok to turn its internal variables is millions of iuterations over input and output data.
 
 
+## Colab: Converting Celsius to Fahrenheit
+
+## Some Machine Learning terminology
+### **Feature** — The input(s) to our model. In this case, a single value — the degrees in Celsius.
+### **Labels** — The output our model predicts. In this case, a single value — the degrees in Fahrenheit.
+### **Example** — A pair of inputs/outputs used during training. In our case a pair of values from celsius_q and fahrenheit_a at a specific index, such as (22,72).
